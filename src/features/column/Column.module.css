@@ -3,6 +3,8 @@
     border-right: 1px solid var(--accent-color);
     border-left: 1px solid var(--accent-color);
     width: 260px;
+    display: flex;
+    flex-direction: column;
 }
 
 .column:first-child {
@@ -23,6 +25,11 @@
 .column__items {
     display: flex;
     flex-direction: column;
-    gap: 12px;
     padding: 8px 4px;
+    height: 100%;
+    flex: 1;
+}
+
+.column__items > * {
+    margin-bottom: 12px;
 }

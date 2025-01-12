@@ -1,0 +1,45 @@
+.button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+
+    border: 1px solid var(--accent-color);
+    font-size: 1rem;
+    padding: 4px 16px;
+    border-radius: var(--border-radius);
+    transition: background-color .2s, color .2s;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* primary button */
+.button.primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.button.primary:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+/* success button, i mean... green button */
+.button.success {
+    background-color: var(--success-color);
+    color: var(--primary-color);
+}
+
+/* warning button */
+.button.warning {
+    background-color: var(--warning-color);
+    color: var(--primary-color);
+}
+
+/* danger button, very danger */
+.button.danger {
+    background-color: var(--danger-color);
+    color: var(--primary-color);
+}

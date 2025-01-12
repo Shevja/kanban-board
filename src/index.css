@@ -10,6 +10,8 @@
 	--success-color: #2e911b;
 	--warning-color: #cc9c17;
 	--danger-color: #a13434;
+
+	--border-radius: 2px;
 }
 
 @font-face {

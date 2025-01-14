@@ -3,7 +3,7 @@ import styles from './Column.module.css';
 import Task from "../task/Task";
 import { Draggable, Droppable } from "@hello-pangea/dnd";
 
-function Column({ id, title, columnKey, taskList, onRemoveCard }) {
+function Column({ id, title, columnKey, taskList, onRemoveCard, onOpenTask }) {
 
     return (
         <Droppable key={id} droppableId={columnKey}>
@@ -34,6 +34,7 @@ function Column({ id, title, columnKey, taskList, onRemoveCard }) {
                                                 createdAt={task.createdAt}
                                                 deadline={task.deadline}
                                                 onRemove={() => onRemoveCard(columnKey, index)}
+                                                onOpenTask={() => onOpenTask(columnKey, index)}
                                             />
                                         </div>
                                     )}

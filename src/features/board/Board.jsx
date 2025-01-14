@@ -3,7 +3,7 @@ import Column from "../column/Column";
 import styles from './Board.module.css'
 import { DragDropContext } from "@hello-pangea/dnd";
 
-function Board({ taskInfo, onDragEnd, onRemoveTask }) {
+function Board({ taskInfo, onDragEnd, onRemoveTask, onOpenTask }) {
     const [columns, setColumns] = useState({
         toDo: 'К выполнению',
         inProgress: 'Выполняется',
@@ -22,6 +22,7 @@ function Board({ taskInfo, onDragEnd, onRemoveTask }) {
                             columnKey={key}
                             taskList={taskInfo[key]}
                             onRemoveCard={onRemoveTask}
+                            onOpenTask={onOpenTask}
                         />
                     ))
                 }

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import Board from './features/board/Board'
 import { reorder, move } from './utils/arrayUtils'
-import Button from './components/Button/Button'
+import Controller from './features/controller/Controller'
+import TaskModal from './features/task/TaskModal'
 
 function getTasks() {
 	const data = [
@@ -35,6 +36,8 @@ function getTasks() {
 
 function App() {
 	const [taskInfo, setTaskInfo] = useState(getTasks())
+	const [modalShowTask, setModalShowTask] = useState(null)
+	const [isModalTaskOpen, setIsModalTaskOpen] = useState(false)
 
 	function onDragEnd(result) {
 		const { source, destination } = result;
@@ -87,11 +90,24 @@ function App() {
 		setTaskInfo(newTaskInfo)
 	}
 
+	function createTask() {
+		console.log('Creating task')
+	}
+
+	function onOpenTask(columnKey, index) {
+		setModalShowTask(taskInfo[columnKey][index])
+		setIsModalTaskOpen(true)
+	}
+
+	const onCloseModalTask = () => {
+		setIsModalTaskOpen(false)
+	}
+
 	return (
 		<div className='App'>
-			<div>
-			</div>
-			<Board taskInfo={taskInfo} onDragEnd={onDragEnd} onRemoveTask={onRemoveTask} />
+			<Controller createTask={createTask} />
+			<Board taskInfo={taskInfo} onDragEnd={onDragEnd} onRemoveTask={onRemoveTask} onOpenTask={onOpenTask} />
+			<TaskModal isOpen={isModalTaskOpen} onCloseModal={onCloseModalTask} task={modalShowTask}  />
 		</div>
 	)
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { getFormattedDate } from "../../utils/dateUtils";
 import styles from './Task.module.css';
 
-function Task({ title, body, priority, createdAt, deadline, onRemove }) {
+function Task({ title, body, priority, createdAt, deadline, onRemove, onOpenTask }) {
     // let formattedCreatedAt = getFormattedDate(createdAt)
     let formattedDeadline = getFormattedDate(deadline)
 
@@ -25,7 +25,7 @@ function Task({ title, body, priority, createdAt, deadline, onRemove }) {
                 <span>{title}</span>
                 <button onClick={onRemove}>&times;</button>
             </div>
-            <div className={styles.body}>
+            <div className={styles.body} onClick={onOpenTask}>
                 <p className={styles.text}>
                     {body}
                 </p>

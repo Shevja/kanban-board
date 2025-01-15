@@ -14,7 +14,7 @@
     position: relative;
     border: 1px solid var(--accent-color);
     border-radius: 2px;
-    padding: 35px 20px;
+    padding: 16px 40px 32px;
     width: 100%;
     background-color: var(--secondary-color);
 }
@@ -30,6 +30,7 @@
     border: none;
     color: var(--main-color);
     transition: background .2s;
+    font-size: 1.5rem;
 }
 
 .modal__close:hover {

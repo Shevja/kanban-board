@@ -28,6 +28,7 @@ function getTasks() {
 			body: task.body,
 			createdAt: task.createdAt,
 			deadline: task.deadline,
+			status: task.status,
 		})
 	});
 
@@ -39,6 +40,7 @@ function App() {
 	const [modalShowTask, setModalShowTask] = useState(null)
 	const [isModalTaskOpen, setIsModalTaskOpen] = useState(false)
 
+	// task controll
 	function onDragEnd(result) {
 		const { source, destination } = result;
 
@@ -94,8 +96,13 @@ function App() {
 		console.log('Creating task')
 	}
 
+	function onChangeTaskPriority(columnKey, index) {
+		console.log('Changing task priority')
+	}
+
+	// task modal
 	function onOpenTask(columnKey, index) {
-		setModalShowTask(taskInfo[columnKey][index])
+		setModalShowTask({ ...taskInfo[columnKey][index], '_relative_index': index })
 		setIsModalTaskOpen(true)
 	}
 
@@ -107,7 +114,7 @@ function App() {
 		<div className='App'>
 			<Controller createTask={createTask} />
 			<Board taskInfo={taskInfo} onDragEnd={onDragEnd} onRemoveTask={onRemoveTask} onOpenTask={onOpenTask} />
-			<TaskModal isOpen={isModalTaskOpen} onCloseModal={onCloseModalTask} task={modalShowTask}  />
+			<TaskModal isOpen={isModalTaskOpen} onCloseModal={onCloseModalTask} task={modalShowTask} onChangeTaskPriority={onChangeTaskPriority} />
 		</div>
 	)
 }

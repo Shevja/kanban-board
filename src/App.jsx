@@ -3,7 +3,8 @@ import './App.css'
 import Board from './features/board/Board'
 import { reorder, move } from './utils/arrayUtils'
 import Controller from './features/controller/Controller'
-import TaskModal from './features/task/TaskModal'
+import ShowTaskModal from './features/modals/ShowTaskModal'
+import CreateTaskModal from './features/modals/CreateTaskModal'
 
 function getTasks() {
 	const data = [
@@ -38,7 +39,8 @@ function getTasks() {
 function App() {
 	const [taskInfo, setTaskInfo] = useState(getTasks())
 	const [modalShowTask, setModalShowTask] = useState(null)
-	const [isModalTaskOpen, setIsModalTaskOpen] = useState(false)
+	const [isShowTaskModalOpen, setIsShowTaskModalOpen] = useState(false)
+	const [isShowCreateModalOpen, setIsShowCreateModalOpen] = useState(false)
 
 	// task controll
 	function onDragEnd(result) {
@@ -92,29 +94,35 @@ function App() {
 		setTaskInfo(newTaskInfo)
 	}
 
-	function createTask() {
-		console.log('Creating task')
-	}
-
 	function onChangeTaskPriority(columnKey, index) {
 		console.log('Changing task priority')
 	}
 
 	// task modal
-	function onOpenTask(columnKey, index) {
+	function onShowTask(columnKey, index) {
 		setModalShowTask({ ...taskInfo[columnKey][index], '_relative_index': index })
-		setIsModalTaskOpen(true)
+		setIsShowTaskModalOpen(true)
+	}
+	function onCreateTask() {
+		setIsShowCreateModalOpen(true)
 	}
 
-	const onCloseModalTask = () => {
-		setIsModalTaskOpen(false)
+	const onCloseShowTaskModal = () => {
+		setIsShowTaskModalOpen(false)
+	}
+
+	const onCloseCreateTaskModal = () => {
+		setIsShowCreateModalOpen(false)
 	}
 
 	return (
 		<div className='App'>
-			<Controller createTask={createTask} />
-			<Board taskInfo={taskInfo} onDragEnd={onDragEnd} onRemoveTask={onRemoveTask} onOpenTask={onOpenTask} />
-			<TaskModal isOpen={isModalTaskOpen} onCloseModal={onCloseModalTask} task={modalShowTask} onChangeTaskPriority={onChangeTaskPriority} />
+			<Controller onCreateTask={onCreateTask} />
+			<Board taskInfo={taskInfo} onDragEnd={onDragEnd} onRemoveTask={onRemoveTask} onOpenTask={onShowTask} />
+
+			{/* modals */}
+			<ShowTaskModal isOpen={isShowTaskModalOpen} onCloseModal={onCloseShowTaskModal} task={modalShowTask} onChangeTaskPriority={onChangeTaskPriority} />
+			<CreateTaskModal isOpen={isShowCreateModalOpen} onCloseModal={onCloseCreateTaskModal} />
 		</div>
 	)
 }

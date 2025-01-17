@@ -1,0 +1,41 @@
+.input {
+    font-size: 1rem;
+    border: none;
+    background-color: transparent;
+    padding: 8px 12px;
+    color: var(--primary-color);
+    border: 1px solid var(--accent-color);
+    transition: border-color .1s ease-out;
+}
+
+.input:focus-visible {
+    border-color: var(--primary-color);
+}
+
+.input::placeholder {
+    font-size: 1rem;
+    color: var(--accent-color);
+}
+
+textarea.input {
+    resize: none;
+    min-height: 120px;
+    max-height: 250px;
+    resize: vertical;
+}
+
+.input__label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input__label span {
+    color: var(--primary-color);
+    font-size: 1rem;
+    transition: color .1s ease-out;
+}
+
+.input__label:focus-within span {
+    color: var(--primary-color);
+}

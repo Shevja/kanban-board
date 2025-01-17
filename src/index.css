@@ -69,3 +69,11 @@ ul {
 p {
 	margin: 0;
 }
+
+:focus-visible {
+	outline: 1px solid white;
+}
+
+input:focus-visible {
+	outline: 0;
+}

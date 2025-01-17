@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Modal from '../../components/Modal/Modal'
-import styles from './Task.module.css'
+import styles from './ShowTaskModal.module.css'
 import { getFormattedDate } from '../../utils/dateUtils';
 import Button from '../../components/Button/Button';
 
-function TaskModal({ isOpen, onCloseModal, task, onChangeTaskPriority }) {
+function ShowTaskModal({ isOpen, onCloseModal, task, onChangeTaskPriority }) {
     if (!isOpen) return null
 
     const formattedDeadline = getFormattedDate(task.deadline)
@@ -53,4 +53,4 @@ function TaskModal({ isOpen, onCloseModal, task, onChangeTaskPriority }) {
     )
 }
 
-export default TaskModal;
+export default ShowTaskModal;

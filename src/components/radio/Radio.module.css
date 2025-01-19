@@ -1,0 +1,44 @@
+.radio {
+    position: relative;
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.radio input {
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+
+.radio label:hover {
+    cursor: pointer;
+}
+
+.radio input:hover~.radio__button {
+    border-color: var(--primary-color);
+}
+
+.radio input:checked~.radio__button {
+    background-color: var(--success-color);
+    border-color: var(--accent-color);
+}
+
+.radio__button {
+    width: 17px;
+    height: 17px;
+    border: 1px solid var(--accent-color);
+    transition: border-color .1s ease-in, background-color .1s ease-in;
+}
+
+.radio__button_inside {
+    width: unset;
+    height: unset;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+}
